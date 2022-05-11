@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Title</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	</head>
+	<body>
+		<h1 class="display-1 text-center">Your Tamagotchis</h1>
+		<ul>
+			@using Tamagotchi.Models
+			@foreach (Pet pet in Model)
+			{
+				@if (pet.Dead)
+				{
+					<li>@pet.Name is dead</li>
+				}
+				else
+				{
+					<li>
+						<a href="/tamagotchi/@pet.Name">@pet.Name</a>
+						<ul>
+							<li>Food: @pet.Food</li>
+							<li>Mood: @pet.Mood</li>
+							<li>Rest: @pet.Rest</li>
+						</ul>
+					</li>
+				}
+			}
+		</ul>
+		<a href="/"><button class="btn btn-primary">Home</button></a>
+		<a href="/tamagotchi/new"><button class="btn-primary btn">Create New Tamagotchi</button></a>
+	</body>
+</html>

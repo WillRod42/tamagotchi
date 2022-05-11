@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Title</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	</head>
+	<body>
+		<h1 class="display-1 text-center">@Model.Name</h1>
+    @if (Model.Dead)
+    {
+      <h3>Died</h3>
+    }
+    else
+    {
+      <ul>
+        <li>Food: @Model.Food</li>
+        <li>Mood: @Model.Mood</li>
+        <li>Rest: @Model.Rest</li>
+      </ul>
+      <form action="/tamagotchi/@Model.Id" method="post">
+        <select name="action" id="action">
+          <option>Feed</option>
+          <option>Play</option>
+          <option>Sleep</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Act</button>
+      </form>
+    }
+
+    <a href="/tamagotchi"><button class="btn btn-primary">Back to List</button></a>
+	</body>
+</html>
