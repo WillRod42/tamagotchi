@@ -13,12 +13,12 @@
 			{
 				@if (pet.Dead)
 				{
-					<li>@pet.Name is dead</li>
+					<li><a href="/tamagotchi/@pet.Id">@pet.Name</a> is dead</li>
 				}
 				else
 				{
 					<li>
-						<a href="/tamagotchi/@pet.Name">@pet.Name</a>
+						<a href="/tamagotchi/@pet.Id">@pet.Name</a>
 						<ul>
 							<li>Food: @pet.Food</li>
 							<li>Mood: @pet.Mood</li>

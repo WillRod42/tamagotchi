@@ -76,9 +76,14 @@ namespace Tamagotchi.Models
 			return _pets;
 		}
 
-		public static Pet Find(int id)
+		public static Pet FindPet(int id)
 		{
-			return _pets[id];
+			return _pets.Find(pet => pet.Id == id);
+		}
+
+		public static void RemovePet(int id)
+		{
+			_pets.Remove(FindPet(id));
 		}
 	}
 }

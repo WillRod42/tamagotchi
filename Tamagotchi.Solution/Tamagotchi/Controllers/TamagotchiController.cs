@@ -14,7 +14,7 @@ namespace Tamagotchi.Controllers
 		[HttpGet("/tamagotchi/{id}")]
 		public ActionResult Show(int id)
 		{
-			return View(Pet.Find(id));
+			return View(Pet.FindPet(id));
 		}
 
 		[HttpGet("/tamagotchi/new")]
@@ -34,7 +34,7 @@ namespace Tamagotchi.Controllers
 		public ActionResult Patch(int id, string action)
 		{
 			Pet.PassTime();
-			Pet pet = Pet.Find(id);
+			Pet pet = Pet.FindPet(id);
 			switch (action)
 			{
 				case "Feed": pet.Feed(); break;
@@ -44,6 +44,13 @@ namespace Tamagotchi.Controllers
 			Pet.CheckIfDead();
 
 			return RedirectToAction("Show", id);
+		}
+
+		[HttpPost("/tamagotchi/{id}/delete")]
+		public ActionResult Delete(int id)
+		{
+			Pet.RemovePet(id);
+			return RedirectToAction("Index");
 		}
 	}
 }
